@@ -29,8 +29,6 @@ label{display:block;font-weight:600;margin-bottom:.5rem;color:var(--muted);font-
 .status{margin-top:.5rem;font-size:.85rem;color:var(--success)}
 .status.error{color:var(--error)}
 .stats{display:flex;gap:1rem;margin-top:.5rem;font-size:.8rem;color:var(--muted)}
-/* Ad placeholder */
-.ad-slot{text-align:center;padding:1rem;color:var(--muted);font-size:.8rem;border:1px dashed var(--border);border-radius:8px;margin:1rem 0}
 .cta{background:linear-gradient(135deg,#3b82f6,#8b5cf6);border-radius:12px;padding:1.5rem;text-align:center;margin:1.5rem 0}
 .cta h3{margin-bottom:.5rem}.cta a{color:#fff;font-weight:700;text-decoration:underline}
 .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.75rem;margin-top:1rem}
@@ -45,33 +43,35 @@ footer{text-align:center;padding:2rem 1rem;color:var(--muted);font-size:.8rem}
   "@type": "WebApplication",
   "name": "Base64 Encoder/Decoder Online — Free Tool",
   "url": "https://maxmini0214.github.io/base64-tool/",
-  "description": "Encode and decode Base64 strings instantly. 100% client-side, no data sent to servers. Free online Base64 converter tool.",
+  "description": "Encode and decode Base64 strings instantly. 100% client-side, no data sent to servers.",
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "Any",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
   "browserRequirements": "Requires JavaScript",
-  "author": {
-    "@type": "Organization",
-    "name": "MaxDevTools",
-    "url": "https://maxmini0214.github.io"
-  }
+  "author": { "@type": "Organization", "name": "MaxDevTools", "url": "https://maxmini0214.github.io" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What is Base64 encoding?", "acceptedAnswer": {"@type": "Answer", "text": "Base64 is a binary-to-text encoding scheme that converts binary data into ASCII characters using 64 characters (A-Z, a-z, 0-9, +, /) plus = for padding. Common uses include embedding images in HTML/CSS, encoding email attachments (MIME), and transmitting binary data in JSON/XML APIs."}},
+    {"@type": "Question", "name": "Is my data safe when using this Base64 tool?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. This tool runs 100% in your browser using JavaScript's built-in btoa() and atob() functions. No data is sent to any server. You can verify by opening your browser's Network tab — zero requests are made when encoding or decoding."}},
+    {"@type": "Question", "name": "Can I encode files or images to Base64?", "acceptedAnswer": {"@type": "Answer", "text": "This tool encodes text strings to Base64. For file/image encoding, use the FileReader API in JavaScript to read a file as a data URL, which produces a Base64-encoded string. Paste the result here to decode and verify."}},
+    {"@type": "Question", "name": "What is the difference between Base64 and URL encoding?", "acceptedAnswer": {"@type": "Answer", "text": "Base64 converts binary data to ASCII text using 64 characters. URL encoding (percent-encoding) replaces unsafe URL characters with %XX hex codes. Base64 is for data transport; URL encoding is for making strings safe in URLs."}},
+    {"@type": "Question", "name": "Why does Base64 increase data size?", "acceptedAnswer": {"@type": "Answer", "text": "Base64 uses 4 ASCII characters to represent every 3 bytes of input, resulting in ~33% size increase. This overhead is the cost of converting binary to text-safe format."}},
+    {"@type": "Question", "name": "Can I share my encoded result with someone?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Click the Share button to generate a URL that contains your input. Anyone opening the link sees the same data pre-filled — no account needed."}}
+  ]
 }
 </script>
 </head>
 <body>
 <header>
-<h1>JWT 토큰 디코딩, 이미지 인코딩 — 복붙 한번이면 끝</h1>
-<p class="subtitle">Base64 인코딩/디코딩 즉시 처리 — 브라우저에서 바로, 데이터 유출 없음</p>
+<h1>Base64 Encoder/Decoder — Instant, Private, Free</h1>
+<p class="subtitle">Encode and decode Base64 strings in your browser. Zero server calls, zero tracking.</p>
 </header>
 <main>
-<!-- AdSense slot reserved -->
-<!-- <ins class="adsbygoogle" data-ad-client="ca-pub-XXXX" data-ad-slot="XXXX"></ins> -->
-<div class="ad-slot">📢 Ad Space</div>
-
 <div class="card">
 <label>Input</label>
 <textarea id="input" placeholder="Paste text or Base64 string here..."></textarea>
@@ -82,6 +82,7 @@ footer{text-align:center;padding:2rem 1rem;color:var(--muted);font-size:.8rem}
 <button class="btn btn-primary" onclick="decode()">← Decode</button>
 <button class="btn btn-secondary" onclick="swap()">⇄ Swap</button>
 <button class="btn btn-secondary" onclick="copyOutput()">📋 Copy</button>
+<button class="btn btn-secondary" onclick="shareState()">🔗 Share</button>
 <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
 </div>
 <div class="card">
@@ -92,26 +93,46 @@ footer{text-align:center;padding:2rem 1rem;color:var(--muted);font-size:.8rem}
 </div>
 
 <div class="cta">
-<h3>🚀 DevTools Pro Bundle — $9</h3>
-<p>All tools offline + API access + priority updates</p>
-<a href="https://payhip.com/MaxDevTools" target="_blank">Get Pro →</a>
+<h3>🏦 DonFlow — Budget Drift Detector</h3>
+<p>See where your budget plan and reality diverge. 100% browser-only, like this tool.</p>
+<a href="https://maxmini0214.github.io/donflow/?demo" target="_blank">Try the Live Demo →</a>
 </div>
 
-<div class="ad-slot">📢 Ad Space</div>
+<section class="card" style="margin-top:1.5rem">
+<h2 style="font-size:1.2rem;margin-bottom:1rem">📖 How to Use This Base64 Tool</h2>
+<ol style="padding-left:1.5rem;line-height:1.8;color:var(--muted)">
+<li><strong>Paste your text</strong> — Type or paste any string into the Input box</li>
+<li><strong>Click Encode or Decode</strong> — Encode converts text→Base64; Decode converts Base64→text</li>
+<li><strong>Copy or Share</strong> — Click Copy to clipboard, or Share to generate a link with your input pre-filled</li>
+<li><strong>Use Swap</strong> — Quickly move output back to input for chained operations</li>
+</ol>
+</section>
+
+<section class="card" style="margin-top:1rem">
+<h2 style="font-size:1.2rem;margin-bottom:1rem">❓ Frequently Asked Questions</h2>
+<details style="margin-bottom:.75rem"><summary style="cursor:pointer;font-weight:600;color:var(--accent)">What is Base64 encoding used for?</summary><p style="margin-top:.5rem;color:var(--muted);line-height:1.6">Base64 encoding transmits binary data over text-based protocols. Common uses: embedding images in HTML/CSS (data URIs), encoding email attachments (MIME), storing binary data in JSON/XML, and encoding JWT tokens.</p></details>
+<details style="margin-bottom:.75rem"><summary style="cursor:pointer;font-weight:600;color:var(--accent)">Is my data sent to any server?</summary><p style="margin-top:.5rem;color:var(--muted);line-height:1.6">No. Everything runs in your browser using JavaScript's native btoa() and atob() functions. Open DevTools → Network tab to verify: zero requests are made.</p></details>
+<details style="margin-bottom:.75rem"><summary style="cursor:pointer;font-weight:600;color:var(--accent)">Why does Base64 output look longer than the input?</summary><p style="margin-top:.5rem;color:var(--muted);line-height:1.6">Base64 uses 4 characters to represent every 3 bytes, resulting in ~33% size increase. This is the trade-off for converting binary data into text-safe ASCII characters.</p></details>
+<details style="margin-bottom:.75rem"><summary style="cursor:pointer;font-weight:600;color:var(--accent)">What's the difference between Base64 and URL encoding?</summary><p style="margin-top:.5rem;color:var(--muted);line-height:1.6">Base64 converts binary to ASCII text (64 chars). URL encoding replaces unsafe characters with %XX hex. They solve different problems: Base64 for data transport, URL encoding for safe URLs. Try our <a href="https://maxmini0214.github.io/url-encoder/" style="color:var(--accent)">URL Encoder</a> for percent-encoding.</p></details>
+<details style="margin-bottom:.75rem"><summary style="cursor:pointer;font-weight:600;color:var(--accent)">Can I decode JWT tokens with this?</summary><p style="margin-top:.5rem;color:var(--muted);line-height:1.6">JWT tokens have 3 Base64URL-encoded parts separated by dots. You can paste the header or payload part here to decode it. For full JWT parsing, try our <a href="https://maxmini0214.github.io/jwt-decoder/" style="color:var(--accent)">JWT Decoder</a>.</p></details>
+<details style="margin-bottom:.75rem"><summary style="cursor:pointer;font-weight:600;color:var(--accent)">Can I share my encoded result?</summary><p style="margin-top:.5rem;color:var(--muted);line-height:1.6">Yes! Click the 🔗 Share button to generate a URL containing your input. Anyone opening the link sees the same data pre-filled — no account needed.</p></details>
+</section>
 
 <h3 style="margin-top:2rem;margin-bottom:.5rem">🛠 More Developer Tools</h3>
 <div class="tools-grid">
+<a class="tool-link" href="https://maxmini0214.github.io/jwt-decoder/">JWT Decoder</a>
 <a class="tool-link" href="https://maxmini0214.github.io/json-formatter/">JSON Formatter</a>
-<a class="tool-link" href="https://maxmini0214.github.io/regex-tester/">Regex Tester</a>
-<a class="tool-link" href="https://maxmini0214.github.io/url-encoder/">URL Encoder</a>
 <a class="tool-link" href="https://maxmini0214.github.io/hash-generator/">Hash Generator</a>
-<a class="tool-link" href="https://maxmini0214.github.io/color-picker/">Color Picker</a>
-<a class="tool-link" href="https://maxmini0214.github.io/lorem-ipsum/">Lorem Ipsum</a>
+<a class="tool-link" href="https://maxmini0214.github.io/regex-tester/">Regex Tester</a>
+<a class="tool-link" href="https://maxmini0214.github.io/keyword-mixer/">Keyword Mixer</a>
+<a class="tool-link" href="https://maxmini0214.github.io/cron-parser/">Cron Parser</a>
+<a class="tool-link" href="https://maxmini0214.github.io/password-generator/">Password Generator</a>
+<a class="tool-link" href="https://maxmini0214.github.io/url-encoder/">URL Encoder</a>
 </div>
 </main>
 <footer>
 <p>🔒 Privacy First — Nothing leaves your browser. Zero server calls.</p>
-<p style="margin-top:.5rem">© 2026 DevTools by maxseats</p>
+<p style="margin-top:.5rem">© 2026 <a href="https://github.com/maxmini0214" style="color:var(--muted)">maxmini0214</a></p>
 </footer>
 <script>
 const inp=document.getElementById('input'),out=document.getElementById('output'),st=document.getElementById('status');
@@ -122,22 +143,9 @@ function decode(){try{out.value=decodeURIComponent(escape(atob(inp.value.trim())
 function swap(){const t=inp.value;inp.value=out.value;out.value=t;updateStats()}
 function copyOutput(){navigator.clipboard.writeText(out.value);st.textContent='✓ Copied!';st.className='status'}
 function clearAll(){inp.value='';out.value='';st.textContent='';updateStats()}
+function shareState(){try{const data=btoa(unescape(encodeURIComponent(inp.value)));const url=new URL(window.location.href.split('?')[0]);url.searchParams.set('d',data);navigator.clipboard.writeText(url.toString());st.textContent='✓ Share link copied!';st.className='status'}catch(e){st.textContent='✗ Could not generate share link';st.className='status error'}}
+(function(){const p=new URLSearchParams(window.location.search);if(p.has('d')){try{inp.value=decodeURIComponent(escape(atob(p.get('d'))));updateStats()}catch(e){}}})();
 </script>
 <script data-goatcounter="https://maxdevtools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<!-- Newsletter CTA -->
-<div style="max-width:480px;margin:2rem auto;padding:1.5rem;background:#f8f9fa;border-radius:12px;text-align:center;font-family:system-ui,sans-serif">
-<p style="margin:0 0 0.5rem;font-size:1.1rem;font-weight:600">📬 Get Dev Tools & Tips Weekly</p>
-<p style="margin:0 0 1rem;color:#666;font-size:0.9rem">Free tools, automation tricks, and AI insights. No spam.</p>
-<form action="https://buttondown.com/api/emails/embed-subscribe/maxmini0214" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/maxmini0214','popupwindow')" style="display:flex;gap:0.5rem;justify-content:center;flex-wrap:wrap">
-<input type="email" name="email" placeholder="your@email.com" required style="padding:0.5rem 1rem;border:1px solid #ddd;border-radius:8px;font-size:0.9rem;width:200px">
-<input type="submit" value="Subscribe" style="padding:0.5rem 1rem;background:#0069ff;color:white;border:none;border-radius:8px;cursor:pointer;font-size:0.9rem;font-weight:600">
-</form>
-</div>
-<!-- Support CTA -->
-<div style="max-width:480px;margin:1rem auto 2rem;padding:1.2rem;background:linear-gradient(135deg,#fff7ed,#fef3c7);border:1px solid #fbbf24;border-radius:12px;text-align:center;font-family:system-ui,sans-serif">
-<p style="margin:0 0 0.5rem;font-size:1rem;font-weight:600;color:#92400e">☕ Like this tool? Support the project!</p>
-<p style="margin:0 0 0.8rem;color:#78716c;font-size:0.85rem">Every coffee keeps free tools alive. No account needed.</p>
-<a href="https://paypal.me/maxseats" target="_blank" rel="noopener" style="display:inline-block;padding:0.5rem 1.5rem;background:#0070ba;color:white;border-radius:8px;text-decoration:none;font-size:0.9rem;font-weight:600">☕ Buy Me a Coffee via PayPal</a>
-</div>
 </body>
 </html>
